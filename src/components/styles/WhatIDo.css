@@ -1,0 +1,229 @@
+.whatIDO {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  height: var(--vh);
+  padding: 120px 80px;
+  box-sizing: border-box;
+  background-color: #000000;
+  border-bottom: 1px solid var(--borderColor);
+  z-index: 10;
+}
+
+.what-box {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.what-box h2.title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 6vw;
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  color: #FFFFFF;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.hat-h2 {
+  font-weight: 300;
+  color: var(--secondaryColor);
+}
+
+.do-h2 {
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 2px;
+}
+
+.what-box:last-child {
+  width: 55%;
+  display: flex;
+  align-items: center;
+}
+
+.what-box-in {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid var(--borderColor);
+}
+
+.what-content {
+  width: 100%;
+  height: 50%;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  padding: 40px;
+  box-sizing: border-box;
+  background-color: #000000;
+  border-bottom: 1px solid var(--borderColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.what-content:last-child {
+  border-bottom: none;
+}
+
+/* Expanding/collapsing hover mechanics */
+.what-noTouch:hover,
+.what-content-active {
+  height: 70%;
+  background-color: #111111;
+}
+
+.what-noTouch:hover ~ .what-content,
+.what-box-in:hover .what-noTouch:not(:hover),
+.what-content.what-sibling {
+  height: 30%;
+}
+
+.what-content h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2vw;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0 0 10px 0;
+  color: #FFFFFF;
+}
+
+.what-content h4 {
+  font-family: "Geist", monospace;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--secondaryColor);
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+}
+
+.what-content p {
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--secondaryColor);
+  margin: 0 0 20px 0;
+  transition: opacity 0.3s ease;
+  opacity: 0.8;
+}
+
+/* Hide tags/descriptions when collapsed */
+.what-noTouch:not(:hover):not(.what-content-active) p,
+.what-content.what-sibling p,
+.what-noTouch:not(:hover):not(.what-content-active) h5,
+.what-content.what-sibling h5,
+.what-noTouch:not(:hover):not(.what-content-active) .what-content-flex,
+.what-content.what-sibling .what-content-flex {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.what-content h5 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: opacity 0.3s ease;
+}
+
+.what-content-flex {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  transition: opacity 0.3s ease;
+}
+
+.what-tags {
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 4px 12px;
+  background-color: #000000;
+  border: 1px solid var(--borderColor);
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.what-arrow {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--borderColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.what-arrow::before {
+  content: "↓";
+  font-size: 14px;
+  color: #FFFFFF;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.what-noTouch:hover .what-arrow::before,
+.what-content-active .what-arrow::before {
+  transform: rotate(-180deg);
+}
+
+/* SVG Blueprint corners and borders */
+.what-border1, .what-border2 {
+  display: none;
+}
+
+/* Responsiveness */
+@media only screen and (max-width: 1024px) {
+  .whatIDO {
+    height: auto;
+    padding: 80px 40px;
+    flex-direction: column;
+    row-gap: 60px;
+  }
+  .what-box {
+    width: 100% !important;
+  }
+  .what-box h2.title {
+    font-size: 8vw;
+  }
+  .what-box-in {
+    height: 500px;
+  }
+  .what-content h3 {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .whatIDO {
+    padding: 60px 20px;
+  }
+  .what-box h2.title {
+    font-size: 10vw;
+  }
+  .what-content h3 {
+    font-size: 20px;
+  }
+  .what-content {
+    padding: 24px;
+  }
+  .what-arrow {
+    top: 24px;
+    right: 24px;
+  }
+}

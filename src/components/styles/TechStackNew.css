@@ -1,0 +1,135 @@
+.techstack-new {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  padding: 120px 80px;
+  box-sizing: border-box;
+  background-color: #000000;
+  border-bottom: 1px solid var(--borderColor);
+  z-index: 10;
+}
+
+.techstack-header-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  column-gap: 80px;
+  margin-bottom: 60px;
+  align-items: end;
+}
+
+.techstack-new h2.title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 5vw;
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  color: #FFFFFF;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.techstack-new h2.title span {
+  color: var(--secondaryColor);
+}
+
+.techstack-subtitle {
+  font-family: "Geist", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--secondaryColor);
+  margin: 0;
+}
+
+.techstack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px; /* borders using grid gap and background color */
+  background-color: var(--borderColor);
+  border: 1px solid var(--borderColor);
+}
+
+.techstack-card {
+  background-color: #000000;
+  padding: 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.techstack-card:hover {
+  background-color: #111111;
+}
+
+.techstack-card-num {
+  font-family: "Geist", monospace;
+  font-size: 12px;
+  color: var(--secondaryColor);
+  letter-spacing: 0.05em;
+}
+
+.techstack-card h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.techstack-skills-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  border-top: 1px solid var(--borderColor);
+  padding-top: 20px;
+}
+
+.techstack-skill-item {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  font-family: "Geist", sans-serif;
+  font-size: 15px;
+  color: var(--secondaryColor);
+}
+
+.skill-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #FFFFFF;
+}
+
+/* Responsiveness */
+@media only screen and (max-width: 1024px) {
+  .techstack-new {
+    padding: 80px 40px;
+  }
+  .techstack-header-grid {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+    margin-bottom: 40px;
+  }
+  .techstack-new h2.title {
+    font-size: 7vw;
+  }
+  .techstack-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .techstack-new {
+    padding: 60px 20px;
+  }
+  .techstack-new h2.title {
+    font-size: 8vw;
+  }
+  .techstack-grid {
+    grid-template-columns: 1fr;
+  }
+  .techstack-card {
+    padding: 24px;
+  }
+}

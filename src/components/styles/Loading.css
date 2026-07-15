@@ -1,0 +1,151 @@
+.loading-screen {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  height: var(--vh);
+  background-color: #000000;
+  z-index: 99999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.loading-header {
+  width: 100%;
+  position: fixed;
+  z-index: 999999999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 24px 40px;
+  left: 0;
+  top: 0;
+  color: #FFFFFF;
+  font-family: "Space Grotesk", sans-serif;
+  transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.loader-title {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+}
+
+.loader-status {
+  font-size: 12px;
+  font-family: "Geist", monospace;
+  letter-spacing: 0.1em;
+  color: var(--secondaryColor);
+}
+
+.loading-marquee-container {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid var(--borderColor);
+  border-bottom: 1px solid var(--borderColor);
+  padding: 12px 0;
+  background-color: #000000;
+}
+
+.marquee-text {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.loading-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  margin-top: 50px;
+}
+
+.loading-percentage {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15vw;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: baseline;
+}
+
+.loading-percentage span {
+  font-size: 4vw;
+  font-weight: 300;
+  color: var(--secondaryColor);
+  margin-left: 10px;
+}
+
+.loading-progress-bar {
+  width: 300px;
+  height: 2px;
+  background-color: var(--borderColor);
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-progress-fill {
+  height: 100%;
+  background-color: #FFFFFF;
+  transition: width 0.1s ease-out;
+}
+
+.loading-footer {
+  position: absolute;
+  bottom: 40px;
+  width: calc(100% - 80px);
+  display: flex;
+  justify-content: space-between;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  color: var(--secondaryColor);
+  letter-spacing: 0.05em;
+  border-top: 1px solid var(--borderColor);
+  padding-top: 20px;
+}
+
+/* Out animation */
+.loading-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .loading-header {
+    padding: 16px 20px;
+  }
+  .loading-footer {
+    width: calc(100% - 40px);
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+    bottom: 20px;
+  }
+  .loading-percentage {
+    font-size: 25vw;
+  }
+  .loading-percentage span {
+    font-size: 8vw;
+  }
+  .loading-progress-bar {
+    width: 200px;
+  }
+  .marquee-text {
+    font-size: 16px;
+  }
+}

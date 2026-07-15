@@ -1,0 +1,181 @@
+.myworks-page {
+  min-height: 100vh;
+  background-color: #000000;
+  padding: 120px 80px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+}
+
+.myworks-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.myworks-header {
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.back-button {
+  font-family: "Space Grotesk", sans-serif;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 12px 28px;
+  border: 1.5px solid var(--borderColor);
+  margin-bottom: 40px;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.back-button:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+  border-color: #FFFFFF;
+}
+
+.myworks-header h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 6vw;
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  margin: 0 0 20px 0;
+  color: #FFFFFF;
+}
+
+.myworks-header p {
+  font-family: "Geist", sans-serif;
+  font-size: 16px;
+  color: var(--secondaryColor);
+  max-width: 500px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.myworks-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--borderColor);
+}
+
+.myworks-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1.5fr;
+  column-gap: 80px;
+  padding: 60px 0;
+  border-bottom: 1px solid var(--borderColor);
+  align-items: start;
+  transition: background-color 0.3s ease;
+}
+
+.myworks-row:hover {
+  background-color: rgba(255, 255, 255, 0.01);
+}
+
+.myworks-meta {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.myworks-num {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  color: #FFFFFF;
+}
+
+.myworks-cat {
+  font-family: "Geist", monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--secondaryColor);
+}
+
+.myworks-main {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.myworks-main h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.myworks-desc {
+  font-family: "Geist", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--secondaryColor);
+  margin: 0;
+}
+
+.myworks-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.myworks-tech-tag {
+  font-family: "Geist", monospace;
+  font-size: 11px;
+  padding: 4px 10px;
+  border: 1px solid var(--borderColor);
+  color: var(--secondaryColor);
+}
+
+.myworks-image-container {
+  width: 100%;
+  height: 200px;
+  border: 1px solid var(--borderColor);
+  overflow: hidden;
+}
+
+.myworks-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsiveness */
+@media only screen and (max-width: 1024px) {
+  .myworks-page {
+    padding: 80px 40px;
+  }
+  .myworks-header h1 {
+    font-size: 8vw;
+  }
+  .myworks-row {
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+    padding: 40px 0;
+  }
+  .myworks-image-container {
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .myworks-page {
+    padding: 60px 20px;
+  }
+  .myworks-header h1 {
+    font-size: 10vw;
+  }
+  .myworks-main h2 {
+    font-size: 28px;
+  }
+  .myworks-image-container {
+    height: 200px;
+  }
+}

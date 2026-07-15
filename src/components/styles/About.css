@@ -1,0 +1,150 @@
+.about-section {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 120px 80px;
+  background-color: transparent;
+  border-bottom: 1px solid var(--borderColor);
+}
+
+.about-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  column-gap: 80px;
+  align-items: start;
+}
+
+.about-left {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.about-left h2.title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 4vw;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: #FFFFFF;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  border-top: 1px solid var(--borderColor);
+  padding-top: 30px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 3vw;
+  font-weight: 700;
+  line-height: 1;
+  color: #FFFFFF;
+}
+
+.stat-label {
+  font-family: "Geist", monospace;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: var(--secondaryColor);
+  margin-top: 5px;
+}
+
+.about-right {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+
+.about-subtitle {
+  font-family: "Geist", monospace;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--secondaryColor);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.about-right p.para {
+  font-family: "Geist", sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--secondaryColor);
+  margin: 0;
+}
+
+.about-achievements {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  border-top: 1px solid var(--borderColor);
+  padding-top: 30px;
+}
+
+.achievement-item h4 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+}
+
+.achievement-item p {
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--secondaryColor);
+  margin: 0;
+}
+
+/* Responsiveness */
+@media only screen and (max-width: 1024px) {
+  .about-section {
+    padding: 80px 40px;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+    row-gap: 60px;
+  }
+  .about-left h2.title {
+    font-size: 7vw;
+  }
+  .stat-number {
+    font-size: 6vw;
+  }
+  .about-right p.para {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .about-section {
+    padding: 60px 20px;
+  }
+  .about-left h2.title {
+    font-size: 8vw;
+  }
+  .about-stats-grid {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+  .stat-number {
+    font-size: 10vw;
+  }
+}
