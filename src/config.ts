@@ -76,7 +76,7 @@ export const config = {
             title: "Hospate",
             category: "Hospital ERP",
             technologies: "React.js, Node.js, PostgreSQL, Redis, WebSockets, Docker",
-            image: "/images/hospate.png",
+            image: "/images/project-1.webp",
             description: "Comprehensive multi-module hospital ERP with OPD, IPD, pharmacy, inventory, billing, and staff modules. Features automated backups and Dockerized services."
         },
         {
@@ -84,7 +84,7 @@ export const config = {
             title: "MrngFlow",
             category: "Productivity Platform",
             technologies: "Next.js 16, React 19, TypeScript, NestJS, Prisma, PostgreSQL, Redis",
-            image: "/images/mrngflow.png",
+            image: "/images/project-2.webp",
             description: "Aesthetic habit tracking and journaling platform featuring printable Flow Sheets with analytics. Monorepo architecture with BullMQ and PWA support."
         },
         {
@@ -92,7 +92,7 @@ export const config = {
             title: "Rakshak",
             category: "Safety App",
             technologies: "React Native, TypeScript, NestJS, PostgreSQL, Redis, AWS S3",
-            image: "/images/rakshak.png",
+            image: "/images/project-3.webp",
             description: "Emergency safety mobile application with encrypted cloud video streaming, live GPS tracking, emergency notifications, and integrity-verified AWS S3 storage."
         },
         {
@@ -100,7 +100,7 @@ export const config = {
             title: "SAARTHI",
             category: "EdTech Learning Platform",
             technologies: "React.js, Node.js, PostgreSQL, Redis, Gemini API, Tailwind CSS",
-            image: "/images/saarthi.png",
+            image: "/images/project-4.webp",
             description: "Complete learning platform with analytics and quizzes. Reduces database load by 60% using Redis caching and integrates Gemini API for AI questions."
         }
     ],

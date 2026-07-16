@@ -4,7 +4,7 @@ import { config } from "../config";
 const About = () => {
   return (
     <div className="about-section section-container" id="about">
-      <div className="about-grid">
+      <div className="about-grid about-me">
         
         {/* Left Column: Big typography statement */}
         <div className="about-left">

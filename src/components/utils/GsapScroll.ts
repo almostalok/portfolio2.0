@@ -21,7 +21,7 @@ export function setCharTimeline(
   const tl2 = gsap.timeline({
     scrollTrigger: {
       trigger: ".about-section",
-      start: "center 55%",
+      start: "top top",
       end: "bottom top",
       scrub: true,
       invalidateOnRefresh: true,
@@ -36,15 +36,25 @@ export function setCharTimeline(
       invalidateOnRefresh: true,
     },
   });
-  let screenLight: any, monitor: any;
+  let screenLight: any, monitorGroup: any;
+  let monitorMaterials: any[] = [];
+  let initialPosY = 0;
+  let initialPosZ = 0;
   character?.children.forEach((object: any) => {
     if (object.name === "Plane004") {
+      monitorGroup = object;
+      initialPosY = object.position.y;
+      initialPosZ = object.position.z;
       object.children.forEach((child: any) => {
-        child.material.transparent = true;
-        child.material.opacity = 0;
-        if (child.material.name === "Material.027") {
-          monitor = child;
-          child.material.color.set("#FFFFFF");
+        if (child.material) {
+          child.material.transparent = true;
+          child.material.opacity = 0;
+          if (!monitorMaterials.includes(child.material)) {
+            monitorMaterials.push(child.material);
+          }
+          if (child.material.name === "Material.027") {
+            child.material.color.set("#FFFFFF");
+          }
         }
       });
     }
@@ -87,7 +97,7 @@ export function setCharTimeline(
         )
         .to(character.rotation, { y: 0.92, x: 0.12, delay: 3, duration: 3 }, 0)
         .to(neckBone!.rotation, { x: 0.6, delay: 2, duration: 3 }, 0)
-        .to(monitor.material, { opacity: 1, duration: 0.8, delay: 3.2 }, 0)
+        .to(monitorMaterials, { opacity: 1, duration: 0.8, delay: 3.2 }, 0)
         .to(screenLight.material, { opacity: 1, duration: 0.8, delay: 4.5 }, 0)
         .fromTo(
           ".what-box-in",
@@ -96,9 +106,9 @@ export function setCharTimeline(
           0
         )
         .fromTo(
-          monitor.position,
-          { y: -10, z: 2 },
-          { y: 0, z: 0, delay: 1.5, duration: 3 },
+          monitorGroup.position,
+          { y: initialPosY - 10, z: initialPosZ + 2 },
+          { y: initialPosY, z: initialPosZ, delay: 1.5, duration: 3 },
           0
         )
         .fromTo(
@@ -144,32 +154,9 @@ export function setAllTimeline() {
   });
   careerTimeline
     .fromTo(
-      ".career-timeline",
-      { maxHeight: "0%" },
-      { maxHeight: "100%", duration: 1, ease: "none" },
-      0
-    )
-
-    .fromTo(
-      ".career-timeline",
-      { opacity: 0 },
-      { opacity: 1, duration: 0.2 },
-      0
-    )
-    .fromTo(
-      ".career-info-box",
-      { opacity: 0 },
-      { opacity: 1, stagger: 0.1, duration: 0.5 },
-      0
-    )
-    .fromTo(
-      ".career-dot",
-      { animationIterationCount: "infinite" },
-      {
-        animationIterationCount: "1",
-        delay: 0.3,
-        duration: 0.1,
-      },
+      ".career-row",
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, stagger: 0.2, duration: 1, ease: "power2.out" },
       0
     );
 
