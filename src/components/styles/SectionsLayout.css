@@ -1,0 +1,79 @@
+.sections-grid-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 60px 32px 100px 32px;
+  box-sizing: border-box;
+}
+
+.sections-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "about      work"
+    "projects   contact"
+    "almostfun  almostfun";
+  gap: 36px;
+  align-items: stretch;
+}
+
+.grid-section-card {
+  background: rgba(14, 14, 18, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 36px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.grid-section-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+.area-about {
+  grid-area: about;
+}
+
+.area-work {
+  grid-area: work;
+}
+
+.area-projects {
+  grid-area: projects;
+}
+
+.area-contact {
+  grid-area: contact;
+}
+
+.area-almostfun {
+  grid-area: almostfun;
+}
+
+/* Responsive single-column grid for tablets and mobile */
+@media screen and (max-width: 1100px) {
+  .sections-grid-container {
+    padding: 40px 16px 80px 16px;
+  }
+
+  .sections-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "about"
+      "work"
+      "projects"
+      "contact"
+      "almostfun";
+    gap: 28px;
+  }
+
+  .grid-section-card {
+    padding: 24px;
+  }
+}

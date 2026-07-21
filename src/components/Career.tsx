@@ -3,10 +3,11 @@ import { config } from "../config";
 
 const Career = () => {
   return (
-    <div className="career-section section-container">
+    <div className="career-section section-container" id="work">
       <div className="career-container">
-        <div className="career-header">
-          <h2 className="title">PROFESSIONAL TIMELINE & CREDENTIALS</h2>
+        <div className="career-header-block">
+          <span className="career-badge">EXPERIENCE & TIMELINE</span>
+          <h2 className="title">PROFESSIONAL <span>CREDENTIALS</span></h2>
           <p className="career-intro-text">
             A chronological trace of startup development, systems engineering, and academic leadership.
           </p>
@@ -42,8 +43,8 @@ const Career = () => {
               <h5>I.T.S Engineering College</h5>
               <ul className="career-bullets">
                 <li>Academic Performance: GPA 8.4/10 (Penultimate Year)</li>
-                <li>President — E-Cell, Social Service & Project Management Club (Leading 500+ students)</li>
-                <li>Head Coordinator — Smart India Hackathon (SIH) 2024–25 Pre-Qualifiers</li>
+                <li>President — E-Cell, Social Service & Project Management Club</li>
+                <li>Head Coordinator — Smart India Hackathon 2024–25</li>
               </ul>
             </div>
           </div>

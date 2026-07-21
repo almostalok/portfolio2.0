@@ -3,66 +3,47 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
 import Lenis from "lenis";
+import { ModalType } from "./MainContainer";
 import "./styles/Navbar.css";
 
 gsap.registerPlugin(ScrollTrigger);
 export let lenis: Lenis | null = null;
 
-const Navbar = () => {
+interface NavbarProps {
+  onOpenModal?: (modal: ModalType) => void;
+}
+
+const Navbar = ({ onOpenModal }: NavbarProps) => {
   useEffect(() => {
     // Initialize Lenis smooth scroll
     lenis = new Lenis({
-      duration: 1.7,
+      duration: 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 1.7,
-      touchMultiplier: 2,
+      smoothWheel: false,
       infinite: false,
     });
 
-    // Start paused
-    lenis.stop();
-
-    // Handle smooth scroll animation frame
     function raf(time: number) {
       lenis?.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
 
-    // Handle navigation links
-    let links = document.querySelectorAll(".header ul a");
-    links.forEach((elem) => {
-      let element = elem as HTMLAnchorElement;
-      element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
-          e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          if (section && lenis) {
-            const target = document.querySelector(section) as HTMLElement;
-            if (target) {
-              lenis.scrollTo(target, {
-                offset: 0,
-                duration: 1.5,
-              });
-            }
-          }
-        }
-      });
-    });
-
-    // Handle resize
-    window.addEventListener("resize", () => {
-      lenis?.resize();
-    });
-
+    // Clean up
     return () => {
       lenis?.destroy();
     };
   }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, modalType: ModalType) => {
+    e.preventDefault();
+    if (onOpenModal) {
+      onOpenModal(modalType);
+    }
+  };
+
   return (
     <>
       <div className="header">
@@ -78,17 +59,27 @@ const Navbar = () => {
         </a>
         <ul>
           <li>
-            <a data-href="#about" href="#about">
+            <a href="#about" onClick={(e) => handleNavClick(e, "about")}>
               <HoverLinks text="ABOUT" />
             </a>
           </li>
           <li>
-            <a data-href="#work" href="#work">
+            <a href="#work" onClick={(e) => handleNavClick(e, "work")}>
               <HoverLinks text="WORK" />
             </a>
           </li>
           <li>
-            <a data-href="#contact" href="#contact">
+            <a href="#projects" onClick={(e) => handleNavClick(e, "projects")}>
+              <HoverLinks text="PROJECTS" />
+            </a>
+          </li>
+          <li>
+            <a href="#almostfun" onClick={(e) => handleNavClick(e, "almostfun")}>
+              <HoverLinks text="ALMOST FUN" />
+            </a>
+          </li>
+          <li>
+            <a href="#contact" onClick={(e) => handleNavClick(e, "contact")}>
               <HoverLinks text="CONTACT" />
             </a>
           </li>

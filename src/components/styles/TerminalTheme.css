@@ -1,0 +1,433 @@
+/* Non-scrollable viewport lock */
+html, body {
+  overflow: hidden !important;
+  height: 100vh !important;
+  height: 100svh !important;
+  margin: 0;
+  padding: 0;
+  background-color: #050508;
+  font-family: "Geist", monospace, sans-serif;
+}
+
+/* Subtle Sci-Fi Scanlines Overlay */
+.terminal-scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+  background: linear-gradient(
+    rgba(18, 16, 26, 0) 50%, 
+    rgba(0, 0, 0, 0.15) 50%
+  );
+  background-size: 100% 4px;
+  opacity: 0.6;
+}
+
+/* Top Telemetry HUD Bar */
+.terminal-hud-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 44px;
+  background: rgba(8, 8, 12, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 900;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  box-sizing: border-box;
+  font-family: "Space Grotesk", monospace;
+  font-size: 12px;
+  color: #a0a0a0;
+}
+
+.hud-left {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.prompt-user {
+  color: #50fa7b;
+  font-weight: 700;
+}
+
+.prompt-sep {
+  color: #f8f8f2;
+}
+
+.prompt-path {
+  color: #8be9fd;
+}
+
+.prompt-char {
+  color: #ff79c6;
+  margin-right: 6px;
+}
+
+.prompt-cmd {
+  color: #f1fa8c;
+}
+
+.hud-center {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+
+.hud-badge {
+  color: #50fa7b;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pulse-dot::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #50fa7b;
+  box-shadow: 0 0 8px #50fa7b;
+  animation: pulse 1.5s infinite;
+}
+
+.hud-divider {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.hud-stat {
+  color: #8be9fd;
+}
+
+.hud-time {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.hud-right {
+  display: flex;
+  align-items: center;
+}
+
+.hud-brand {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 3px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* 5 Spatial Terminal Keycap Buttons */
+.terminal-btn-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.terminal-btn-module {
+  pointer-events: auto;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 20px;
+  width: 210px;
+  background: rgba(12, 12, 18, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.terminal-btn-module:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+}
+
+.terminal-btn-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.terminal-btn-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #50fa7b;
+  box-shadow: 0 0 10px #50fa7b;
+}
+
+.terminal-btn-key {
+  font-family: "Geist", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.terminal-btn-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.terminal-btn-label {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.terminal-btn-sub {
+  font-family: "Geist", monospace;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: #a0a0a0;
+  text-transform: uppercase;
+}
+
+/* Color themes for buttons */
+.theme-green {
+  border-color: rgba(80, 250, 123, 0.3);
+}
+.theme-green .terminal-btn-led { background: #50fa7b; box-shadow: 0 0 10px #50fa7b; }
+.theme-green:hover { border-color: #50fa7b; box-shadow: 0 0 25px rgba(80, 250, 123, 0.3); }
+
+.theme-cyan {
+  border-color: rgba(139, 233, 253, 0.3);
+}
+.theme-cyan .terminal-btn-led { background: #8be9fd; box-shadow: 0 0 10px #8be9fd; }
+.theme-cyan:hover { border-color: #8be9fd; box-shadow: 0 0 25px rgba(139, 233, 253, 0.3); }
+
+.theme-amber {
+  border-color: rgba(255, 184, 108, 0.3);
+}
+.theme-amber .terminal-btn-led { background: #ffb86c; box-shadow: 0 0 10px #ffb86c; }
+.theme-amber:hover { border-color: #ffb86c; box-shadow: 0 0 25px rgba(255, 184, 108, 0.3); }
+
+.theme-magenta {
+  border-color: rgba(255, 121, 198, 0.3);
+}
+.theme-magenta .terminal-btn-led { background: #ff79c6; box-shadow: 0 0 10px #ff79c6; }
+.theme-magenta:hover { border-color: #ff79c6; box-shadow: 0 0 25px rgba(255, 121, 198, 0.3); }
+
+.theme-purple {
+  background: rgba(24, 16, 36, 0.92);
+  border-color: rgba(189, 147, 249, 0.4);
+}
+.theme-purple .terminal-btn-led { background: #bd93f9; box-shadow: 0 0 10px #bd93f9; }
+.theme-purple:hover { border-color: #bd93f9; box-shadow: 0 0 30px rgba(189, 147, 249, 0.4); }
+
+/* Spatial Positioning */
+.btn-top-left {
+  top: 70px;
+  left: 36px;
+}
+
+.btn-top-right {
+  top: 70px;
+  right: 36px;
+}
+
+.btn-bottom-left {
+  bottom: 36px;
+  left: 36px;
+}
+
+.btn-bottom-right {
+  bottom: 36px;
+  right: 36px;
+}
+
+.btn-bottom-center {
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+}
+
+.btn-bottom-center:hover {
+  transform: translateX(-50%) translateY(-4px) scale(1.04);
+}
+
+/* UNIX Terminal Window Overlay */
+.terminal-window-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  animation: termFade 0.25s ease forwards;
+}
+
+.terminal-window-frame {
+  width: 100%;
+  max-width: 960px;
+  max-height: 85vh;
+  background: #0d0d12;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 40px rgba(80, 250, 123, 0.1);
+  overflow: hidden;
+  animation: termPop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* UNIX Window Titlebar */
+.terminal-titlebar {
+  height: 42px;
+  background: #161620;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.terminal-window-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot-close { background: #ff5555; }
+.dot-close:hover { opacity: 0.8; }
+.dot-min { background: #f1fa8c; }
+.dot-max { background: #50fa7b; }
+
+.terminal-title-text {
+  font-family: "Geist", monospace;
+  font-size: 12px;
+  color: #a0a0a0;
+  letter-spacing: 0.05em;
+}
+
+.terminal-close-action {
+  background: transparent;
+  border: none;
+  color: #a0a0a0;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.terminal-close-action:hover {
+  color: #ff5555;
+}
+
+/* Banner command prompt */
+.terminal-cmd-banner {
+  background: #111118;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: "Geist", monospace;
+  font-size: 12px;
+}
+
+.cmd-prompt-line {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.cmd-status-line {
+  font-size: 10px;
+  color: #6272a4;
+  letter-spacing: 0.08em;
+}
+
+.t-green { color: #50fa7b; }
+.t-cyan { color: #8be9fd; }
+.t-yellow { color: #f1fa8c; }
+.t-white { color: #ffffff; }
+
+.terminal-window-body {
+  padding: 28px;
+  overflow-y: auto;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+@keyframes termFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes termPop {
+  from { opacity: 0; transform: scale(0.96) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Responsive Breakpoints */
+@media screen and (max-width: 900px) {
+  .btn-top-left { top: 60px; left: 16px; }
+  .btn-top-right { top: 60px; right: 16px; }
+  .btn-bottom-left { bottom: 20px; left: 16px; }
+  .btn-bottom-right { bottom: 20px; right: 16px; }
+  .btn-bottom-center { bottom: 16px; }
+  .terminal-btn-module {
+    width: 155px;
+    padding: 10px 14px;
+  }
+  .btn-bottom-center { width: 180px; }
+  .terminal-btn-label { font-size: 12px; }
+  .terminal-btn-sub { font-size: 9px; }
+  .terminal-hud-top { padding: 0 12px; font-size: 10px; }
+  .hud-center { display: none; }
+}

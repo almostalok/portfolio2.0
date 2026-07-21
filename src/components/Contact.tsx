@@ -1,112 +1,65 @@
 import { MdArrowOutward, MdCopyright } from "react-icons/md";
 import "./styles/Contact.css";
 import { config } from "../config";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect } from "react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
-  useEffect(() => {
-    const contactTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".contact-section",
-        start: "top 80%",
-        end: "bottom center",
-        toggleActions: "play none none none",
-      },
-    });
-
-    // Animate title from bottom
-    contactTimeline.fromTo(
-      ".contact-section h3",
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      }
-    );
-
-    // Animate contact boxes with stagger from bottom
-    contactTimeline.fromTo(
-      ".contact-box",
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.15,
-        ease: "power3.out",
-      },
-      "-=0.4"
-    );
-
-    // Clean up
-    return () => {
-      contactTimeline.kill();
-    };
-  }, []);
-
   return (
     <div className="contact-section section-container" id="contact">
       <div className="contact-container">
-        <h3>LET'S BUILD SOMETHING SERIOUS.</h3>
-        <div className="contact-flex">
-          
+        <div className="contact-header-block">
+          <span className="contact-badge">GET IN TOUCH</span>
+          <h2 className="title">LET'S BUILD <span>SOMETHING SERIOUS</span></h2>
+        </div>
+
+        <div className="contact-grid">
           <div className="contact-box">
             <h4>COMMUNICATION</h4>
-            <p>
+            <p className="contact-email">
               <a href={`mailto:${config.contact.email}`} data-cursor="disable">
                 {config.contact.email}
               </a>
             </p>
+
             <h4>LOCATION</h4>
-            <p>
-              <span>{config.social.location.toUpperCase()}</span>
+            <p className="contact-location">
+              {config.social.location.toUpperCase()}
             </p>
           </div>
           
           <div className="contact-box">
             <h4>NETWORKS</h4>
-            <a
-              href={config.contact.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              GITHUB <MdArrowOutward />
-            </a>
-            <a
-              href={config.contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              LINKEDIN <MdArrowOutward />
-            </a>
-            <a
-              href={config.contact.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              TWITTER <MdArrowOutward />
-            </a>
+            <div className="contact-social-links">
+              <a
+                href={config.contact.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="disable"
+                className="contact-social"
+              >
+                GITHUB <MdArrowOutward />
+              </a>
+              <a
+                href={config.contact.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="disable"
+                className="contact-social"
+              >
+                LINKEDIN <MdArrowOutward />
+              </a>
+              <a
+                href={config.contact.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="disable"
+                className="contact-social"
+              >
+                TWITTER <MdArrowOutward />
+              </a>
+            </div>
           </div>
 
-          <div className="contact-box contact-copyright-box">
+          <div className="contact-copyright-box">
             <h2>
               DESIGNED & DEVELOPED<br />
               BY <span>{config.developer.fullName.toUpperCase()}</span>
@@ -115,7 +68,6 @@ const Contact = () => {
               <MdCopyright /> {new Date().getFullYear()} ALL RIGHTS RESERVED
             </h5>
           </div>
-
         </div>
       </div>
     </div>

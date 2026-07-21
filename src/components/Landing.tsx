@@ -44,7 +44,7 @@ const Landing = ({ children }: PropsWithChildren) => {
 
           <div className="scroll-indicator">
             <div className="scroll-line"></div>
-            <span>SCROLL TO EXPLORE</span>
+            <span>SELECT SECTION TO EXPLORE</span>
           </div>
 
         </div>
