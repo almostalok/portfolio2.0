@@ -42,11 +42,6 @@ const Landing = ({ children }: PropsWithChildren) => {
             <span className="coord-item">STATUS: BUILD_ACTIVE</span>
           </div>
 
-          <div className="scroll-indicator">
-            <div className="scroll-line"></div>
-            <span>SELECT SECTION TO EXPLORE</span>
-          </div>
-
         </div>
         {children}
       </div>

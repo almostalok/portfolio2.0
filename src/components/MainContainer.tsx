@@ -4,7 +4,6 @@ import Career from "./Career";
 import Contact from "./Contact";
 import Cursor from "./Cursor";
 import Landing from "./Landing";
-import SocialIcons from "./SocialIcons";
 import Work from "./Work";
 import AlmostFunSection from "./AlmostFunSection";
 import SectionModal from "./SectionModal";
@@ -89,8 +88,6 @@ const MainContainer = ({ children }: PropsWithChildren) => {
 
       {/* Futuristic Telemetry HUD */}
       <TerminalHUD />
-
-      <SocialIcons />
 
       {/* Main Hero Viewport Focus (3D Canvas + Intro) */}
       <Landing>
