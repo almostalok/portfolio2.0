@@ -6,17 +6,16 @@ const Landing = ({ children }: PropsWithChildren) => {
   return (
     <>
       <div className="landing-section" id="landingDiv">
-        <div className="landing-container">
-          
-          <div className="landing-intro">
-            <h2>ALOK KUMAR SINGH</h2>
-            <h1>
-              BUILDER<br />
-              ENGINEER<br />
-              FOUNDER
-            </h1>
+        
+        {/* Infinite Background Marquee behind Character */}
+        <div className="hero-background-marquee">
+          <div className="marquee-track">
+            <span>FOUNDER | FULL STACK DEV | BUILDER | SYSTEMS ENGINEER | OPEN SOURCE | CTO @ HOSPATE | DATABASE ARCHITECT | </span>
+            <span>FOUNDER | FULL STACK DEV | BUILDER | SYSTEMS ENGINEER | OPEN SOURCE | CTO @ HOSPATE | DATABASE ARCHITECT | </span>
           </div>
+        </div>
 
+        <div className="landing-container landing-container-centered">
           <div className="landing-info">
             <h3>I DEVELOP HIGH-THROUGHPUT</h3>
             
